@@ -1,0 +1,12 @@
+#Virtual environment
+.venv
+
+#CMake build
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Environment variables / secrets
+.env
