@@ -1,0 +1,5 @@
+(Almost) Every directory in this project has a concern.txt file inside. It explains what this 
+directory contains and what are the files inside used for
+
+Purpose: What can users of my library do? It contains the declarations of the C library: the
+headers
