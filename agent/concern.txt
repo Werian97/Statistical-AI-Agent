@@ -1,3 +1,4 @@
 (Almost) Every directory in this project has a concern.txt file inside. It explains what this 
 directory contains and what are the files inside used for
 
+Purpose: The actual AI-Agent structure. The tools it uses.
