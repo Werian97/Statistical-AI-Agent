@@ -5,6 +5,11 @@
 
 int main() {
     assert(5 == mysum(2, 3));
+    double arr1[] = {2.0, -2.0};
+    assert(abs(0.0 - mean(arr1, 2)) < 1e-6);
+    
+    double arr2[] = {20.0, 13.0, -3.0};
+    assert(abs(10.0 - mean(arr2, 3)) < 1e-6);
 
     return 0;
 }
