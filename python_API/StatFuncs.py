@@ -1,14 +1,11 @@
-import os
 import ctypes
+import python_API.C_lib_API as clib
 
-test_file_path: str = os.path.abspath(".")
-shared_lib_path: str = os.path.join(test_file_path, "build/libStatFuncs.so")
-C_Library = ctypes.CDLL(shared_lib_path)
+def mysum(a: int, b: int) :
+    return clib.c_mysum(a,b)
 
-mysum = C_Library.mysum
-mysum.argtypes = [ctypes.c_int, ctypes.c_int]
-mysum.restype = ctypes.c_int
-
-mean = C_Library.mean
-mean.argtypes = [ctypes.c_double * 2, ctypes.c_size_t]
-mean.restype = ctypes.c_float
+def mean(l: list[float]):
+    size: int = len(l)
+    arr = ctypes.c_double * size
+    c_list = arr(*l)
+    return clib.c_mean(c_list, size)
