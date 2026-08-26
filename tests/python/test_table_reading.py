@@ -3,8 +3,9 @@ from data import read_data
 
 from data.read_data import Table
 
-file_path: str = "./data/big_data/house_prices.csv"
-table: Table = read_data.get_table(file_path)
+from data.filepath_to_data import HOUSE_PRICES
+
+table: Table = read_data.get_table(HOUSE_PRICES)
 
 class TestStringMethods(unittest.TestCase):
     def test_reading(self):

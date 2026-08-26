@@ -1,0 +1,1 @@
+HOUSE_PRICES: str = "./data/big_data/house_prices.csv"

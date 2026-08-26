@@ -1,4 +1,5 @@
 import csv
+import os
 
 Row = list[str]
 Rows = list[Row]
@@ -36,6 +37,9 @@ class Table():
 def get_table(file_path: str) -> Table:
     rows: Rows = []
     fields: Row = []
+    if not os.path.isfile(file_path):
+        raise ValueError(f"{file_path} is not a valid target file")
+
     with open(file_path, 'r') as csvfile:
         csv_reader = csv.reader(csvfile)
 
