@@ -11,5 +11,7 @@ int main() {
     double arr2[] = {20.0, 13.0, -3.0};
     assert(abs(10.0 - mean(arr2, 3)) < 1e-6);
 
+    printf("Every test in C was successful\n");
+
     return 0;
 }
