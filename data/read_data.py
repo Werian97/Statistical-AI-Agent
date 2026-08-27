@@ -26,8 +26,8 @@ class Table():
 
         return Table(self.fields, new_rows)
 
-    def get_column(self, field: str):
-        i = self.get_field_index(field)
+    def get_column(self, field: str) -> list[str]:
+        i: int = self.get_field_index(field)
         column: list[str] = []
         for row in self.rows:
             column.append(row[i])

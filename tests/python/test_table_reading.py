@@ -5,7 +5,7 @@ from data.read_data import Table
 
 from data.filepath_to_data import HOUSE_PRICES
 
-table: Table = read_data.get_table(HOUSE_PRICES)
+table: Table = read_data.get_table("./data/" + HOUSE_PRICES)
 
 class TestStringMethods(unittest.TestCase):
     def test_reading(self):

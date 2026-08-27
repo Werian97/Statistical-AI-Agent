@@ -1,6 +1,6 @@
-from typing import Iterable, Sequence, cast
+from typing import cast
 
-from agent import agent_settings, build_agent
+from agent import build_agent
 
 from openai import OpenAI
 from openai.types.chat import ChatCompletion, ChatCompletionMessageParam, ChatCompletionMessageFunctionToolCall
