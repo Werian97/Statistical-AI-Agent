@@ -35,38 +35,31 @@ def read_arguments() -> Namespace:
     parser.add_argument("--verbose", action="store_true", help="enable verbose output")
     return parser.parse_args()
 
-def ask_question(client: OpenAI, args: Namespace) -> ChatCompletion:
-    messages: list[ChatCompletionMessageParam] = [
-        {"role": "user", "content": args.user_prompt,},
-        {"role": "system", "content": system_prompt}
-    ]
-
+def ask_question(client: OpenAI, messages: list[ChatCompletionMessageParam]) -> ChatCompletion:
     response = client.chat.completions.create(
         model="openrouter/free",
         messages=messages,
         tools=available_functions
     )
-    return response
+    messages.append(cast(ChatCompletionMessageParam, response.choices[0].message))
 
-def print_response(response: ChatCompletion, args: Namespace):
     if response.usage is None:
         raise RuntimeError("response failed")
+    
+    return response
 
-    message = response.choices[0].message
-    cast(ChatCompletionMessageParam, message)
-    if message.tool_calls is not None:
-        for tool_call in message.tool_calls:
-            if isinstance(tool_call, ChatCompletionMessageFunctionToolCall):
-                function_args = json.loads(tool_call.function.arguments or "{}")
-                print(f"Calling function: {tool_call.function.name}({function_args})")
-                result_message: dict = call_function(tool_call, args.verbose)
-                if args.verbose:
-                    print(f"-> {result_message['content']}")
-            else:
-                print("Something unexpected happened")
-    else:
-        if args.verbose:
-            print(f"User prompt: {args.user_prompt}")
+def handle_tool_call(tool_calls: list[ChatCompletionMessageFunctionToolCall], args: Namespace, messages: list[ChatCompletionMessageParam]):
+    for tool_call in tool_calls:
+        if isinstance(tool_call, ChatCompletionMessageFunctionToolCall):
+            result_message: ChatCompletionMessageParam = call_function(tool_call, args.verbose)
+            messages.append(result_message)
+        else:
+            raise Exception("tool_call is expected to be an instance of 'ChatCompletionMessageFunctionToolCall'")
+
+def print_response(response: ChatCompletion, args: Namespace):
+    if args.verbose:
+        print(f"User prompt: {args.user_prompt}")
+        if response.usage is not None:
             print(f"Prompt tokens: {response.usage.prompt_tokens}")
             print(f"Response tokens: {response.usage.completion_tokens}")
-        print(response.choices[0].message.content)
+    print(response.choices[0].message.content)

@@ -1,6 +1,6 @@
 import json
 
-from openai.types.chat import ChatCompletionToolUnionParam
+from openai.types.chat import ChatCompletionToolUnionParam, ChatCompletionMessageParam
 
 from collections.abc import Callable
 
@@ -14,7 +14,7 @@ function_map: dict[str, Callable[..., str]] = {
     "get_fields": get_fields,
 }
 
-def call_function(tool_call, verbose: bool = False) -> dict:
+def call_function(tool_call, verbose: bool = False) -> ChatCompletionMessageParam:
     function_name = tool_call.function.name
     function_args = json.loads(tool_call.function.arguments or "{}")
     if verbose:
@@ -30,8 +30,12 @@ def call_function(tool_call, verbose: bool = False) -> dict:
             "content": f"Error: Unknown function: {function_name}",
         }
 
+    content = func(**function_args)
+    if verbose:
+        print(f"-> {content}")
+
     return {
         "role": "tool",
         "tool_call_id": tool_call.id,
-        "content": func(**function_args),
+        "content": content,
     }
