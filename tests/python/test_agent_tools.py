@@ -27,7 +27,7 @@ class TestStringMethods(unittest.TestCase):
         )
 
     def test_get_column_mean(self):
-        result: float = float(get_column_mean(TEST_TABLE, "a"))
+        result: float = float(get_column_mean(TEST_TABLE, field ="a"))
         self.assertLessEqual(result + 1.666, 1e-6)
 
 if __name__ == '__main__':
