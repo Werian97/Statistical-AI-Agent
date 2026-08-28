@@ -14,3 +14,8 @@ c_mysum.restype = ctypes.c_int
 c_mean = C_Library.mean
 c_mean.argtypes = [ctypes.POINTER(ctypes.c_double), ctypes.c_size_t]
 c_mean.restype = ctypes.c_double
+
+#MAX
+c_max = C_Library.max
+c_max.argtypes = [ctypes.POINTER(ctypes.c_double), ctypes.c_size_t]
+c_max.restype = ctypes.c_double

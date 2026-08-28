@@ -6,15 +6,18 @@ from collections.abc import Callable
 
 from agent.tools.get_column_mean import get_column_mean, schema_get_column_mean
 from agent.tools.get_fields import get_fields, schema_get_fields
+from agent.tools.get_column_max import get_column_max, schema_get_column_max
 
 available_functions: list[ChatCompletionToolUnionParam] = [
     schema_get_fields,
-    schema_get_column_mean
+    schema_get_column_mean,
+    schema_get_column_max,
 ]
 
 function_map: dict[str, Callable[..., str]] = {
     "get_fields": get_fields,
-    "get_column_mean": get_column_mean
+    "get_column_mean": get_column_mean,
+    "get_column_max": get_column_max
 }
 
 def call_function(tool_call, verbose: bool = False) -> ChatCompletionMessageParam:

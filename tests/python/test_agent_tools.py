@@ -2,6 +2,7 @@ import unittest
 
 from agent.tools.get_fields import get_fields
 from agent.tools.get_column_mean import get_column_mean
+from agent.tools.get_column_max import get_column_max
 from data.filepath_to_data import HOUSE_PRICES, TEST_TABLE
 
 class TestStringMethods(unittest.TestCase):
@@ -29,6 +30,24 @@ class TestStringMethods(unittest.TestCase):
     def test_get_column_mean(self):
         result: float = float(get_column_mean(TEST_TABLE, field ="a"))
         self.assertLessEqual(result + 1.666, 1e-6)
+
+    def test_get_column_mean_non_numerical(self):
+        alert_message: str = get_column_mean(TEST_TABLE, field ="c")
+        self.assertEqual(
+            alert_message,
+            "Error: you can calculate mean only for numerical values"
+        )
+
+    def test_get_column_max(self):
+        result: str = get_column_max(TEST_TABLE, field="a")
+        self.assertEqual(result, "3.0")
+
+    def test_get_column_max_non_numerical(self):
+        alert_message: str = get_column_max(TEST_TABLE, field ="c")
+        self.assertEqual(
+            alert_message,
+            "Error: you can calculate max only for numerical values"
+        )
 
 if __name__ == '__main__':
     unittest.main()
