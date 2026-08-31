@@ -20,5 +20,11 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(StatFuncs.max(arr3), 2.0)
         self.assertEqual(StatFuncs.max([]), float("-inf"))
 
+    def test_min(self):
+        self.assertEqual(StatFuncs.min(arr1), -2.0)
+        self.assertEqual(StatFuncs.min(arr2), -3.0)
+        self.assertEqual(StatFuncs.min(arr3), 2.0)
+        self.assertEqual(StatFuncs.min([]), float("+inf"))
+
 if __name__ == '__main__':
     unittest.main()

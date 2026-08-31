@@ -1,9 +1,13 @@
 import unittest
 
-from agent.tools.get_fields import get_fields
-from agent.tools.get_column_mean import get_column_mean
-from agent.tools.get_column_max import get_column_max
+from agent.tools.call_functions import function_map
+
 from data.filepath_to_data import HOUSE_PRICES, TEST_TABLE
+
+get_fields = function_map["get_fields"]
+get_column_mean = function_map["get_column_mean"]
+get_column_max = function_map["get_column_max"]
+get_column_min = function_map["get_column_min"]
 
 class TestStringMethods(unittest.TestCase):
     def test_get_fields(self):
@@ -47,6 +51,17 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(
             alert_message,
             "Error: you can calculate max only for numerical values"
+        )
+
+    def test_get_column_min(self):
+            result: str = get_column_min(TEST_TABLE, field="a")
+            self.assertEqual(result, "-10.0")
+    
+    def test_get_column_min_non_numerical(self):
+        alert_message: str = get_column_min(TEST_TABLE, field ="c")
+        self.assertEqual(
+            alert_message,
+            "Error: you can calculate min only for numerical values"
         )
 
 if __name__ == '__main__':

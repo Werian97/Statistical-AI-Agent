@@ -22,3 +22,13 @@ double max(double *arr, size_t n) {
     }
     return max_so_far;
 }
+
+double min(double *arr, size_t n) {
+    double min_so_far = INFINITY;
+    for (size_t i = 0; i < n; i++) {
+        if (*(arr+i) < min_so_far) {
+            min_so_far = *(arr+i);
+        }
+    }
+    return min_so_far;
+}

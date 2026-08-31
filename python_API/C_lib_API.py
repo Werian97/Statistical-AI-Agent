@@ -19,3 +19,8 @@ c_mean.restype = ctypes.c_double
 c_max = C_Library.max
 c_max.argtypes = [ctypes.POINTER(ctypes.c_double), ctypes.c_size_t]
 c_max.restype = ctypes.c_double
+
+#MIN
+c_min = C_Library.min
+c_min.argtypes = [ctypes.POINTER(ctypes.c_double), ctypes.c_size_t]
+c_min.restype = ctypes.c_double
