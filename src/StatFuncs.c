@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
+#include "utility_functions.h"
+
 int mysum(int a, int b) {
     return a+b;
 }
@@ -31,4 +33,9 @@ double min(double *arr, size_t n) {
         }
     }
     return min_so_far;
+}
+
+double variance(double *arr, size_t n) {
+    double *squared_arr = square_arr(arr, n);
+    return mean(squared_arr, n) - (mean(arr, n) * mean(arr, n));
 }

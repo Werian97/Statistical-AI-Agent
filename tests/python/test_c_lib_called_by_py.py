@@ -26,5 +26,10 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(StatFuncs.min(arr3), 2.0)
         self.assertEqual(StatFuncs.min([]), float("+inf"))
 
+    def test_variance(self):
+        self.assertLess(abs(StatFuncs.variance(arr1) - 4.0), 1e-6)
+        self.assertLess(abs(StatFuncs.variance(arr2) - 0.6666666), 1e-6)
+        self.assertLess(abs(StatFuncs.variance(arr3)), 1e-6)
+
 if __name__ == '__main__':
     unittest.main()

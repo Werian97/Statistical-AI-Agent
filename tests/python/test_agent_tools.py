@@ -8,6 +8,7 @@ get_fields = function_map["get_fields"]
 get_column_mean = function_map["get_column_mean"]
 get_column_max = function_map["get_column_max"]
 get_column_min = function_map["get_column_min"]
+get_column_variance = function_map["get_column_variance"]
 
 class TestStringMethods(unittest.TestCase):
     def test_get_fields(self):
@@ -62,6 +63,17 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(
             alert_message,
             "Error: you can calculate min only for numerical values"
+        )
+
+    def test_get_column_variance(self):
+            result: str = get_column_variance(TEST_TABLE, field="a")
+            self.assertLess(abs(float(result) - 34.8888888), 1e-6)
+    
+    def test_get_column_variance_non_numerical(self):
+        alert_message: str = get_column_variance(TEST_TABLE, field ="c")
+        self.assertEqual(
+            alert_message,
+            "Error: you can calculate variance only for numerical values"
         )
 
 if __name__ == '__main__':

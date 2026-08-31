@@ -21,6 +21,10 @@ int main() {
     assert(min(arr2, 3) == -3.0);
     assert(min(arr3, 3) == -5.0);
 
+    assert(abs(variance(arr1, 2) - 4.0) < 1e-6);
+    assert(abs(variance(arr2, 3) - 92.6666666) < 1e-6);
+    assert(abs(variance(arr3, 3) - 42.0) < 1e-6);
+
     printf("Every test in C was successful\n");
 
     return 0;

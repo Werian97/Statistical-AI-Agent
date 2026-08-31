@@ -24,3 +24,8 @@ c_max.restype = ctypes.c_double
 c_min = C_Library.min
 c_min.argtypes = [ctypes.POINTER(ctypes.c_double), ctypes.c_size_t]
 c_min.restype = ctypes.c_double
+
+#VARIANCE
+c_variance = C_Library.variance
+c_variance.argtypes = [ctypes.POINTER(ctypes.c_double), ctypes.c_size_t]
+c_variance.restype = ctypes.c_double

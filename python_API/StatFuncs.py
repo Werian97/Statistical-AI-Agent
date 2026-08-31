@@ -21,3 +21,9 @@ def min(vector: list[float]):
     arr = ctypes.c_double * size
     c_list = arr(*vector)
     return clib.c_min(c_list, size)
+
+def variance(vector: list[float]):
+    size: int = len(vector)
+    arr = ctypes.c_double * size
+    c_list = arr(*vector)
+    return clib.c_variance(c_list, size)

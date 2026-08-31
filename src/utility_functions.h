@@ -1,0 +1,1 @@
+double *square_arr(double *arr, size_t n);
