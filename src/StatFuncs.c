@@ -44,3 +44,12 @@ double covariance(double *arr1, double *arr2, size_t n) {
     double *arr1_times_arr2 = multiply_arrs(arr1, arr2, n);
     return mean(arr1_times_arr2, n) - (mean(arr1, n) * mean(arr2, n));
 }
+
+double median(double *arr, size_t n) {
+    quick_sort(arr, 0, n - 1);
+    if (n % 2 == 0) {
+        double middle_values[2] = {arr[n/2-1], arr[n/2]};
+        return mean(middle_values, 2);
+    }
+    return arr[(n-1)/2];
+}

@@ -38,3 +38,8 @@ c_covariance.argtypes = [
     ctypes.c_size_t
 ]
 c_covariance.restype = ctypes.c_double
+
+#MEDIAN
+c_median = C_Library.median
+c_median.argtypes = [ctypes.POINTER(ctypes.c_double), ctypes.c_size_t]
+c_median.restype = ctypes.c_double

@@ -28,7 +28,11 @@ int main() {
     assert(abs(covariance(arr1, arr1, 2) - 4.0) < 1e-6);
     assert(abs(covariance(arr2, arr3, 3) + 37.0) < 1e-6);
 
-    printf("Every test in C was successful\n");
+    assert(median(arr1, 2) == 0.0);
+    assert(median(arr2, 3) == 13.0);
+    assert(median(arr3, 3) == 7.0);
+
+    printf("Every test in C for StatFuncs library was successful\n");
 
     return 0;
 }

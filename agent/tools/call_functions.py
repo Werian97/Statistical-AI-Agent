@@ -10,6 +10,7 @@ from agent.tools.get_column_max import get_column_max, schema_get_column_max
 from agent.tools.get_column_min import get_column_min, schema_get_column_min
 from agent.tools.get_column_variance import get_column_variance, schema_get_column_variance
 from agent.tools.get_column_covariance import get_column_covariance, schema_get_column_covariance
+from agent.tools.get_column_median import get_column_median, schema_get_column_median
 
 available_functions: list[ChatCompletionToolUnionParam] = [
     schema_get_fields,
@@ -18,6 +19,7 @@ available_functions: list[ChatCompletionToolUnionParam] = [
     schema_get_column_min,
     schema_get_column_variance,
     schema_get_column_covariance,
+    schema_get_column_median,
 ]
 
 function_map: dict[str, Callable[..., str]] = {
@@ -27,6 +29,7 @@ function_map: dict[str, Callable[..., str]] = {
     "get_column_min": get_column_min,
     "get_column_variance": get_column_variance,
     "get_column_covariance": get_column_covariance,
+    "get_column_median": get_column_median,
 }
 
 def call_function(tool_call, verbose: bool = False) -> ChatCompletionMessageParam:

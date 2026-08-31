@@ -10,6 +10,7 @@ get_column_max = function_map["get_column_max"]
 get_column_min = function_map["get_column_min"]
 get_column_variance = function_map["get_column_variance"]
 get_column_covariance = function_map["get_column_covariance"]
+get_column_median = function_map["get_column_median"]
 
 class TestStringMethods(unittest.TestCase):
     def test_get_fields(self):
@@ -86,6 +87,17 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(
             alert_message,
             "Error: you can calculate covariance only for numerical values"
+        )
+
+    def test_get_column_median(self):
+            result: str = get_column_median(TEST_TABLE, field="a")
+            self.assertEqual(result, "2.0")
+    
+    def test_get_column_median_non_numerical(self):
+        alert_message: str = get_column_median(TEST_TABLE, field="c")
+        self.assertEqual(
+            alert_message,
+            "Error: you can calculate median only for numerical values"
         )
 
 if __name__ == '__main__':

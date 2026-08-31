@@ -37,3 +37,9 @@ def covariance(vector1: list[float], vector2: list[float]):
     c_list1 = arr(*vector1)
     c_list2 = arr(*vector2)
     return clib.c_covariance(c_list1, c_list2, size)
+
+def median(vector: list[float]):
+    size: int = len(vector)
+    arr = ctypes.c_double * size
+    c_list = arr(*vector)
+    return clib.c_median(c_list, size)

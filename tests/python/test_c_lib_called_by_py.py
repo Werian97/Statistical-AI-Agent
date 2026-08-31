@@ -41,5 +41,10 @@ class TestStringMethods(unittest.TestCase):
         with self.assertRaises(ValueError):
             StatFuncs.covariance(arr1, arr2)
 
+    def test_median(self):
+        self.assertLess(abs(StatFuncs.median(arr1)), 1e-6)
+        self.assertEqual(StatFuncs.median(arr2), -2.0)
+        self.assertEqual(StatFuncs.median(arr3), 2.0)
+
 if __name__ == '__main__':
     unittest.main()
