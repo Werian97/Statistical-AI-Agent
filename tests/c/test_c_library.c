@@ -25,6 +25,9 @@ int main() {
     assert(abs(variance(arr2, 3) - 92.6666666) < 1e-6);
     assert(abs(variance(arr3, 3) - 42.0) < 1e-6);
 
+    assert(abs(covariance(arr1, arr1, 2) - 4.0) < 1e-6);
+    assert(abs(covariance(arr2, arr3, 3) + 37.0) < 1e-6);
+
     printf("Every test in C was successful\n");
 
     return 0;

@@ -7,6 +7,7 @@ You can perform the following operation:
 - get the max of a single column (numerical values only)
 - get the min of a single column (numerical values only)
 - get the variance of a single column (numerical values only)
+- get the covariance of two columns (numerical values only)
 
 All filepath will treated as relative to the "data" directory.
 The tables are located in two directories "big_data" and "small_data".

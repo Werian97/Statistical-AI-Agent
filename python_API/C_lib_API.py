@@ -29,3 +29,12 @@ c_min.restype = ctypes.c_double
 c_variance = C_Library.variance
 c_variance.argtypes = [ctypes.POINTER(ctypes.c_double), ctypes.c_size_t]
 c_variance.restype = ctypes.c_double
+
+#COVARIANCE
+c_covariance = C_Library.covariance
+c_covariance.argtypes = [
+    ctypes.POINTER(ctypes.c_double),
+    ctypes.POINTER(ctypes.c_double),
+    ctypes.c_size_t
+]
+c_covariance.restype = ctypes.c_double

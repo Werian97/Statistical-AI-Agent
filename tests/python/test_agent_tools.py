@@ -9,6 +9,7 @@ get_column_mean = function_map["get_column_mean"]
 get_column_max = function_map["get_column_max"]
 get_column_min = function_map["get_column_min"]
 get_column_variance = function_map["get_column_variance"]
+get_column_covariance = function_map["get_column_covariance"]
 
 class TestStringMethods(unittest.TestCase):
     def test_get_fields(self):
@@ -74,6 +75,17 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(
             alert_message,
             "Error: you can calculate variance only for numerical values"
+        )
+
+    def test_get_column_covariance(self):
+            result: str = get_column_covariance(TEST_TABLE, field1="a", field2="b")
+            self.assertLess(abs(float(result) + 4.0), 1e-6)
+    
+    def test_get_column_covariance_non_numerical(self):
+        alert_message: str = get_column_covariance(TEST_TABLE, field1 ="c", field2="d")
+        self.assertEqual(
+            alert_message,
+            "Error: you can calculate covariance only for numerical values"
         )
 
 if __name__ == '__main__':

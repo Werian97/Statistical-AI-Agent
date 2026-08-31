@@ -31,5 +31,15 @@ class TestStringMethods(unittest.TestCase):
         self.assertLess(abs(StatFuncs.variance(arr2) - 0.6666666), 1e-6)
         self.assertLess(abs(StatFuncs.variance(arr3)), 1e-6)
 
+    def test_covariance(self):
+        self.assertLess(abs(StatFuncs.covariance(arr1, arr1) - 4.0), 1e-6)
+        self.assertLess(abs(StatFuncs.covariance(arr1, arr2[:2]) + 1), 1e-6)
+        self.assertLess(abs(StatFuncs.covariance(arr3, arr1[:1])), 1e-6)
+        self.assertLess(abs(StatFuncs.covariance([2.0, 3.0, -10.0], [0.0, 1.0, 2.0]) + 4.0), 1e-6)
+
+    def test_covariance_different_length(self):
+        with self.assertRaises(ValueError):
+            StatFuncs.covariance(arr1, arr2)
+
 if __name__ == '__main__':
     unittest.main()

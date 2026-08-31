@@ -39,3 +39,8 @@ double variance(double *arr, size_t n) {
     double *squared_arr = square_arr(arr, n);
     return mean(squared_arr, n) - (mean(arr, n) * mean(arr, n));
 }
+
+double covariance(double *arr1, double *arr2, size_t n) {
+    double *arr1_times_arr2 = multiply_arrs(arr1, arr2, n);
+    return mean(arr1_times_arr2, n) - (mean(arr1, n) * mean(arr2, n));
+}
