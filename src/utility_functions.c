@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 double *square_arr(double *arr, size_t n) {
     double *new_arr = malloc(n * sizeof(double));
@@ -42,5 +43,32 @@ void quick_sort(double *arr, int first, int last) {
     myswap(arr, ++i, pivot_index); // now i is the pivot index
     quick_sort(arr, first, i - 1);
     quick_sort(arr, i + 1, last);
+    return;
+}
+
+void myswap_string(char **arr, int i, int j) {
+    char *temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+    return;
+}
+
+void quick_sort_string(char **arr, int first, int last) {
+    if (last - first <= 0) {
+        return;
+    }
+
+    int pivot_index = last;
+    char *pivot = *(arr + pivot_index);
+    int i = first - 1;
+    for (int j = first; j < last; j++) {
+        if (strcmp(arr[j], pivot) < 0) {
+            i++;
+            myswap_string(arr, i, j);
+        }
+    }
+    myswap_string(arr, ++i, pivot_index); // now i is the pivot index
+    quick_sort_string(arr, first, i - 1);
+    quick_sort_string(arr, i + 1, last);
     return;
 }

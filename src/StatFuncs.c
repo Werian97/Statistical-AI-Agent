@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 #include "utility_functions.h"
 
@@ -52,4 +53,30 @@ double median(double *arr, size_t n) {
         return mean(middle_values, 2);
     }
     return arr[(n-1)/2];
+}
+
+const char *mode(const char **arr, size_t n) {
+    /*If there are 2 or more values with the same occurrancy number
+    this function will return the (alphabetical) biggest string*/
+    quick_sort_string(arr, 0, n-1);
+    size_t current_winner_occurrency = 0;
+    size_t contendent_occurrency = 0;
+    char *current_winner = arr[0];
+    char *contendent = arr[0];
+    for (size_t i = 0; i < n; i++) {
+        if (strcmp(contendent, arr[i]) != 0) {
+            contendent = arr[i];
+            contendent_occurrency = 0;
+        }
+        if (strcmp(current_winner, contendent) == 0) {
+            current_winner_occurrency++;
+        } else {
+            contendent_occurrency++;
+        }
+        if (contendent_occurrency > current_winner_occurrency) {
+            current_winner = contendent;
+            current_winner_occurrency = contendent_occurrency;
+        }
+    }
+    return current_winner;
 }

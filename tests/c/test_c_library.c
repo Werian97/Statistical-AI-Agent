@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <StatFuncs.h>
+#include <string.h>
 
 int main() {
     assert(5 == mysum(2, 3));
@@ -31,6 +32,15 @@ int main() {
     assert(median(arr1, 2) == 0.0);
     assert(median(arr2, 3) == 13.0);
     assert(median(arr3, 3) == 7.0);
+
+    char *arr_str1[] = {
+        "aaa", "aaa", "bbb", "bbb", "bbb", "bbb", "aaa"
+    };
+    assert(strcmp(mode(arr_str1, sizeof(arr_str1) / sizeof(arr_str1[0])), "bbb") == 0);
+    char *arr_str2[] = {
+        "aaa", "aaa", "bbb", "bbb", "bbb", "bbb", "aaa", "cc", "cc", "cc", "cc", "cc", "cc",
+    };
+    assert(strcmp(mode(arr_str2, sizeof(arr_str2) / sizeof(arr_str2[0])), "cc") == 0);
 
     printf("Every test in C for StatFuncs library was successful\n");
 

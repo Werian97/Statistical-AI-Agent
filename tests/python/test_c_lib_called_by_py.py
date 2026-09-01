@@ -46,5 +46,17 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(StatFuncs.median(arr2), -2.0)
         self.assertEqual(StatFuncs.median(arr3), 2.0)
 
+    def test_mode(self):
+        arr_str: list[str] = ["aaa", "bb", "aaa", "aaa", "bb", "bb", "bb"]
+        self.assertEqual(StatFuncs.mode(arr_str), "bb")
+        arr_str = ["a", "b", "c", "d"]
+        self.assertEqual(StatFuncs.mode(arr_str), "a")
+        arr_str = ["b", "c", "a", "d"]
+        self.assertEqual(StatFuncs.mode(arr_str), "a")
+        arr_str = ["1", "2", "3"]
+        self.assertEqual(StatFuncs.mode(arr_str), "1")
+        arr_str = ["2", "3", "111111"]
+        self.assertEqual(StatFuncs.mode(arr_str), "111111")
+
 if __name__ == '__main__':
     unittest.main()

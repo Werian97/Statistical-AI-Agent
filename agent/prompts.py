@@ -9,6 +9,7 @@ You can perform the following operation:
 - get the variance of a single column (numerical values only)
 - get the covariance of two columns (numerical values only)
 - get the median of a single column (numerical values only)
+- get the mode of a single column (every value is allowed)
 
 All filepath will treated as relative to the "data" directory.
 The tables are located in two directories "big_data" and "small_data".

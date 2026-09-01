@@ -43,3 +43,10 @@ def median(vector: list[float]):
     arr = ctypes.c_double * size
     c_list = arr(*vector)
     return clib.c_median(c_list, size)
+
+def mode(vector: list[str]):
+    size: int = len(vector)
+    arr = ctypes.c_char_p * size
+    vector_c_strings = [ctypes.c_char_p(x.encode('utf-8')) for x in vector]
+    c_list = arr(*vector_c_strings)
+    return (clib.c_mode(c_list, size)).decode("utf-8")

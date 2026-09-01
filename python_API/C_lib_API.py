@@ -43,3 +43,8 @@ c_covariance.restype = ctypes.c_double
 c_median = C_Library.median
 c_median.argtypes = [ctypes.POINTER(ctypes.c_double), ctypes.c_size_t]
 c_median.restype = ctypes.c_double
+
+#MODE
+c_mode = C_Library.mode
+c_mode.argtypes = [ctypes.POINTER(ctypes.c_char_p), ctypes.c_size_t]
+c_mode.restype = ctypes.c_char_p

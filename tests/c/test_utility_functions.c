@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 #include "utility_functions.h"
 
@@ -34,6 +35,19 @@ int main() {
     assert(arr4[2] == 9.0);
     assert(arr4[3] == 12.0);
     assert(arr4[4] == 20.0);
+
+    char first_str[5] = "ciao";
+    char second_str[6] = "prova";
+    char third_str[4] = "zzz";
+    char *arr_str[3] = {
+        second_str,
+        third_str,
+        first_str,
+    };
+    quick_sort_string(arr_str, 0, 2);
+    assert(strcmp(arr_str[0], "ciao") == 0);
+    assert(strcmp(arr_str[1], "prova") == 0);
+    assert(strcmp(arr_str[2], "zzz") == 0);
 
     printf("Every test for utility functions in C was successful\n");
 

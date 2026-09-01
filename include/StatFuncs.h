@@ -5,3 +5,4 @@ double min(double *arr, size_t n);
 double variance(double *arr, size_t n);
 double covariance(double *arr1, double *arr2, size_t n);
 double median(double *arr, size_t n);
+char *mode(char **arr, size_t n);
