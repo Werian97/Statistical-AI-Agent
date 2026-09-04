@@ -27,7 +27,7 @@ def filter_by_numerical_range(table: Table, field: str, min_value: float, max_va
             row_value_floated: float = float(row[i])
         except Exception:
             raise ValueError("You can filter by range only numerical values")
-        if min_value < row_value_floated and row_value_floated < max_value:
+        if min_value <= row_value_floated and row_value_floated <= max_value:
             new_rows.append(row.copy())
     return Table(table.fields, new_rows)
 
@@ -35,7 +35,7 @@ def filter_by_alphabetical_range(table: Table, field: str, min_value: str, max_v
     i: int = table.get_field_index(field)
     new_rows: Rows = []
     for row in table.rows:
-        if min_value < row[i] and row[i] < max_value:
+        if min_value <= row[i] and row[i] <= max_value:
             new_rows.append(row.copy())
     return Table(table.fields, new_rows)
 
@@ -55,14 +55,15 @@ def remove_numerical_range(table: Table, field: str, min_value: float, max_value
             row_value_floated: float = float(row[i])
         except Exception:
             raise ValueError("You can filter by range only numerical values")
-        if min_value >= row_value_floated or row_value_floated >= max_value:
+        if min_value > row_value_floated or row_value_floated > max_value:
             new_rows.append(row.copy())
     return Table(table.fields, new_rows)
+
 def remove_alphabetical_range(table: Table, field: str, min_value: str, max_value: str):
     i: int = table.get_field_index(field)
     new_rows: Rows = []
     for row in table.rows:
-        if min_value >= row[i] or row[i] >= max_value:
+        if min_value > row[i] or row[i] > max_value:
             new_rows.append(row.copy())
     return Table(table.fields, new_rows)
 

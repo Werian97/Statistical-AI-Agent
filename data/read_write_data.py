@@ -68,7 +68,7 @@ def save_csv(table: Table):
         writer.writerow(table.fields)
         for row in table.rows:
             writer.writerow(row)
-    return relative_file_path
+    return f"tmp/{file_name}"
     
 
 def count_temporary() -> int:

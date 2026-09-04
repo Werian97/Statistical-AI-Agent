@@ -27,7 +27,8 @@ def main():
             break
         build_agent.handle_tool_call(tool_calls, args, messages) #updates messages
     if response.choices[0].message.tool_calls is not None:
-        print(f"The AI agent couldn't answer in {MAX_ITERATION}")
+        print(f"The AI agent couldn't answer in {MAX_ITERATION} iterations")
+        clean_temporary()
         exit(1)
     build_agent.print_response(response, args)
 

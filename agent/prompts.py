@@ -12,7 +12,6 @@ If the user does not specify what table he wants to analyze just use "house_pric
 
 You can access to the following tables:
 1. "house_prices.csv" in the "big_data" directory
-2. "test_table.csv" in the "small_data" directory
 
 For example: you can access "house_prices.csv" by injecting the file path "big_data/house_prices.csv".
 """

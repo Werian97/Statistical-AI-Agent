@@ -41,7 +41,7 @@ schema_filter_data: ChatCompletionToolUnionParam = {
                         },
                         "numerical_range": {
                             "type": "object",
-                            "description": "Each key identifies a field. Its value specifies the minimum and maximum values allowed for that field. Pick only the rows which have the selected field between the min_value and max_value selected. Min and max are excluded and the values in the field must be numerical.",
+                            "description": "Each key identifies a field. Its value specifies the minimum and maximum values allowed for that field. Pick only the rows which have the selected field between the min_value and max_value selected. Min and max are included and the values in the field must be numerical.",
                             "additionalProperties": {
                                 "type": "object",
                                 "properties": {
@@ -58,7 +58,7 @@ schema_filter_data: ChatCompletionToolUnionParam = {
                         },
                         "alphabetical_range": {
                             "type": "object",
-                            "description": "Each key identifies a field. Its value specifies the minimum and maximum values allowed for that field. Pick only the rows which have the selected field alphabetically between the min_value and max_value selected. Min and max are excluded",
+                            "description": "Each key identifies a field. Its value specifies the minimum and maximum values allowed for that field. Pick only the rows which have the selected field alphabetically between the min_value and max_value selected. Min and max are included",
                             "additionalProperties": {
                                 "type": "object",
                                 "properties": {
@@ -82,7 +82,7 @@ schema_filter_data: ChatCompletionToolUnionParam = {
                         },
                         "numerical_range_remove": {
                             "type": "object",
-                            "description": "Each key identifies a field. Its value specifies the minimum and maximum values allowed for that field. Remove from the table all rows which have the selected field between the min_value and max_value selected. Min and max are not removed from the table and the values in the field must be numerical.",
+                            "description": "Each key identifies a field. Its value specifies the minimum and maximum values allowed for that field. Remove from the table all rows which have the selected field between the min_value and max_value selected. Min and max are removed from the table and the values in the field must be numerical.",
                             "additionalProperties": {
                                 "type": "object",
                                 "properties": {
@@ -99,7 +99,7 @@ schema_filter_data: ChatCompletionToolUnionParam = {
                         },
                         "alphabetical_range_remove": {
                             "type": "object",
-                            "description": "Each key identifies a field. Its value specifies the minimum and maximum values allowed for that field. Remove from the table all rows which have the selected field alphabetically between the min_value and max_value selected. Min and max are not removed from the table.",
+                            "description": "Each key identifies a field. Its value specifies the minimum and maximum values allowed for that field. Remove from the table all rows which have the selected field alphabetically between the min_value and max_value selected. Min and max are removed from the table.",
                             "additionalProperties": {
                                 "type": "object",
                                 "properties": {

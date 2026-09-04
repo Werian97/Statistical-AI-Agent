@@ -3,6 +3,7 @@ import os
 
 HOUSE_PRICES: str = "big_data/house_prices.csv"
 TEST_TABLE: str = "small_data/test_table.csv"
+BIGGER_TEST_TABLE: str = "small_data/bigger_test_table.csv"
 DATA_DIRECTORY: str = "./data"
 TMP_FILEPATH: str = "./data/tmp"
 
