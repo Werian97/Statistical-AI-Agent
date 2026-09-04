@@ -13,3 +13,6 @@ __pycache__/
 
 # Personal
 personal*
+
+#temporary
+*data/tmp/tmp_*

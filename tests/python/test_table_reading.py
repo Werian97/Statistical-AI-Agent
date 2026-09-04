@@ -1,14 +1,14 @@
 import unittest
 
 from data import filter
-from data import read_data
+from data import read_write_data
 
-from data.read_data import Table
+from data.read_write_data import Table
 
 from data.filepath_to_data import HOUSE_PRICES, TEST_TABLE
 
-house_prices: Table = read_data.get_table("./data/" + HOUSE_PRICES)
-test_table: Table = read_data.get_table("./data/" + TEST_TABLE)
+house_prices: Table = read_write_data.get_table("./data/" + HOUSE_PRICES)
+test_table: Table = read_write_data.get_table("./data/" + TEST_TABLE)
 
 class TestStringMethods(unittest.TestCase):
     def test_reading(self):

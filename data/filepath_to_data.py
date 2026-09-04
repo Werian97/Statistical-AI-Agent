@@ -4,6 +4,7 @@ import os
 HOUSE_PRICES: str = "big_data/house_prices.csv"
 TEST_TABLE: str = "small_data/test_table.csv"
 DATA_DIRECTORY: str = "./data"
+TMP_FILEPATH: str = "./data/tmp"
 
 def validate_filepath(target_table: str):
     if os.path.splitext(target_table)[1] != ".csv":

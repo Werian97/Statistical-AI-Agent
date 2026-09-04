@@ -1,9 +1,9 @@
 from python_API import StatFuncs
 
-from data.read_data import Table
+from data.read_write_data import Table
 from openai.types.chat import ChatCompletionToolUnionParam
 
-from data.read_data import get_table
+from data.read_write_data import get_table
 from data.filepath_to_data import path_validator
 
 def get_column_covariance_to_wrap(target_table: str, field1: str, field2: str):

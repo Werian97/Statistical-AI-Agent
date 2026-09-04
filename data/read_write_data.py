@@ -1,5 +1,8 @@
 import csv
 import os
+import shutil
+
+from data.filepath_to_data import TMP_FILEPATH
 
 Row = list[str]
 Rows = list[Row]
@@ -48,3 +51,33 @@ def get_table(file_path: str) -> Table:
         for row in csv_reader:
             rows.append(row)
     return Table(fields, rows)
+
+
+def save_csv(table: Table):
+    n = count_temporary() + 1
+    if n < 10:
+        file_name: str = "tmp_0" + str(n) + ".csv"
+    else:
+        file_name: str = "tmp_" + str(n) + ".csv"
+
+    relative_file_path: str = os.path.join(TMP_FILEPATH, file_name)
+
+    abs_file_path: str = os.path.join(os.path.abspath("."), relative_file_path)
+    with open(abs_file_path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(table.fields)
+        for row in table.rows:
+            writer.writerow(row)
+    return relative_file_path
+    
+
+def count_temporary() -> int:
+    if not os.path.isdir(TMP_FILEPATH):
+        os.mkdir(TMP_FILEPATH)
+        return 0
+    return len(os.listdir(TMP_FILEPATH))
+
+def clean_temporary() -> None:
+    if os.path.isdir(TMP_FILEPATH):
+        shutil.rmtree(TMP_FILEPATH)
+    return

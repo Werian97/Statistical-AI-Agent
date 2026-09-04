@@ -6,6 +6,8 @@ from openai import OpenAI
 from openai.types.chat import ChatCompletion, ChatCompletionMessageParam, ChatCompletionMessageFunctionToolCall
 from argparse import Namespace
 
+from data.read_write_data import clean_temporary
+
 from agent.prompts import system_prompt
 from agent.agent_settings import MAX_ITERATION
 
@@ -28,5 +30,7 @@ def main():
         print(f"The AI agent couldn't answer in {MAX_ITERATION}")
         exit(1)
     build_agent.print_response(response, args)
+
+    clean_temporary()
 
 main()
