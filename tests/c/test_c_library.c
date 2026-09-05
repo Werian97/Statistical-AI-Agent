@@ -5,7 +5,6 @@
 #include <string.h>
 
 int main() {
-    assert(5 == mysum(2, 3));
     double arr1[] = {2.0, -2.0};
     double arr2[] = {20.0, 13.0, -3.0};
     double arr3[] = {-5.0, 10.0, 7.0};

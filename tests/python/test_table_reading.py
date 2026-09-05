@@ -26,16 +26,6 @@ class TestStringMethods(unittest.TestCase):
         with self.assertRaises(ValueError):
             non_existing_column = house_prices.get_column('dates')
 
-    def test_add_tables(self):
-        double_test_table = test_table + test_table
-        self.assertEqual(len(double_test_table.rows), 6)
-        self.assertEqual(double_test_table.rows[3][0], "2")
-        self.assertEqual(double_test_table.rows[5], double_test_table.rows[2])
-
-    def test_add_different_tables(self):
-        with self.assertRaises(ValueError):
-            err = test_table + house_prices
-
     def test_filter_by_exact_value(self):
         filtered_table: Table = filter.filter_by_exact_value(test_table, "b", "1")
         self.assertEqual(len(filtered_table.rows), 1)

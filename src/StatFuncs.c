@@ -1,12 +1,9 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "utility_functions.h"
-
-int mysum(int a, int b) {
-    return a+b;
-}
 
 double mean(double *arr, size_t n) {
     double tot = 0;
@@ -38,12 +35,16 @@ double min(double *arr, size_t n) {
 
 double variance(double *arr, size_t n) {
     double *squared_arr = square_arr(arr, n);
-    return mean(squared_arr, n) - (mean(arr, n) * mean(arr, n));
+    double result = mean(squared_arr, n) - (mean(arr, n) * mean(arr, n));
+    free(squared_arr);
+    return result;
 }
 
 double covariance(double *arr1, double *arr2, size_t n) {
     double *arr1_times_arr2 = multiply_arrs(arr1, arr2, n);
-    return mean(arr1_times_arr2, n) - (mean(arr1, n) * mean(arr2, n));
+    double result = mean(arr1_times_arr2, n) - (mean(arr1, n) * mean(arr2, n));
+    free(arr1_times_arr2);
+    return result;
 }
 
 double median(double *arr, size_t n) {
@@ -55,7 +56,7 @@ double median(double *arr, size_t n) {
     return arr[(n-1)/2];
 }
 
-const char *mode(const char **arr, size_t n) {
+char *mode(char **arr, size_t n) {
     /*If there are 2 or more values with the same occurrancy number
     this function will return the (alphabetical) biggest string*/
     quick_sort_string(arr, 0, n-1);

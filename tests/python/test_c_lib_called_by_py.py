@@ -5,10 +5,6 @@ arr1: list[float] = [2.0,-2.0]
 arr2: list[float] = [-3.0, -2.0, -1.0]
 arr3: list[float] = [2.0]
 class TestStringMethods(unittest.TestCase):
-
-    def test_basic_usage(self):
-        self.assertEqual(3, StatFuncs.mysum(1,2))
-
     def test_mean(self):
         self.assertLess(abs(StatFuncs.mean(arr1)), 1e-6)
         self.assertLess(abs(StatFuncs.mean(arr2) + 2), 1e-6)

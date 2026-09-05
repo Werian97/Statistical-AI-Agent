@@ -1,4 +1,4 @@
-from typing import cast
+import sys
 
 from agent import build_agent
 
@@ -7,6 +7,7 @@ from openai.types.chat import ChatCompletion, ChatCompletionMessageParam, ChatCo
 from argparse import Namespace
 
 from data.read_write_data import clean_temporary
+from typing import cast
 
 from agent.prompts import system_prompt
 from agent.agent_settings import MAX_ITERATION
@@ -16,8 +17,8 @@ def main():
     args: Namespace = build_agent.read_arguments()
 
     messages: list[ChatCompletionMessageParam] = [
+        {"role": "system", "content": system_prompt},
         {"role": "user", "content": args.user_prompt,},
-        {"role": "system", "content": system_prompt}
     ]
     response: ChatCompletion
     for _ in range(MAX_ITERATION):
@@ -29,7 +30,7 @@ def main():
     if response.choices[0].message.tool_calls is not None:
         print(f"The AI agent couldn't answer in {MAX_ITERATION} iterations")
         clean_temporary()
-        exit(1)
+        sys.exit(1)
     build_agent.print_response(response, args)
 
     clean_temporary()
