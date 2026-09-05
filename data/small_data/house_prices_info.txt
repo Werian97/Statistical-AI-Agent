@@ -1,0 +1,29 @@
+This dataset contains 4,600 historical property sales records, primarily focused on the
+Washington State real estate market (including Seattle, Bellevue, Redmond, and surrounding
+areas). It provides a comprehensive overview of how structural, historical, and geographic
+features impact property valuation.
+There are some missing values filled with "0" or "0.0".
+For every field is specified if it is "Numerical", which means it has only numerical values.
+If a field is Numerical it is specified if it is "Fractional" which means all numbers has fractional component (eventually ".0")
+For example: price is Numerical - Fractional, therefore it cannot contain a value such as "300000",
+it would be written as "300000.0".
+
+The fields are:
+- date: The specific date when the real estate transaction was recorded (Format: YYYY-MM-DD).
+- price: (Numerical - Fractional) The final sale price of the property in USD (Target Variable).
+- bedrooms: (Numerical - Fractional) The total number of bedrooms in the property.
+- bathrooms: (Numerical - Fractional) The total number of bathrooms. Fractional values (e.g., 1.5, 2.25) indicate partial baths (e.g., a toilet and sink but no shower).
+- sqft_living: (Numerical) The total interior square footage of the living space.
+- sqft_lot: (Numerical) The total square footage of the land or lot the property sits on.
+- floors: (Numerical - Fractional) The number of stories or levels in the property.
+- waterfront: (Numerical) A binary indicator (1 or 0) denoting whether the property has a waterfront.
+- view: (Numerical) A rated index (0 to 4) indicating the overall quality of the property's view.
+- condition: (Numerical) A rated index (1 to 5) indicating the overall structural and aesthetic condition of the property.
+- sqft_above: (Numerical) Square footage of the house apart from basement.
+- sqft_basement: (Numerical) Square footage of the basement.
+- yr_built: (Numerical) The year when the house was built.
+- yr_renovated: (Numerical) The year when the house was renovated.
+- street: The address of the house.
+- city: The city where the house is.
+- statezip: ZIP code relative to the house.
+- price_per_sqft: (Numerical - Fractional) price per square foot.

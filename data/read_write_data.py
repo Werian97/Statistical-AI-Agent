@@ -37,7 +37,6 @@ class Table():
         sum_rows.extend(other.rows)
         return Table(self.fields, sum_rows)
 
-
 def get_table(file_path: str) -> Table:
     rows: Rows = []
     fields: Row = []
@@ -51,7 +50,6 @@ def get_table(file_path: str) -> Table:
         for row in csv_reader:
             rows.append(row)
     return Table(fields, rows)
-
 
 def save_csv(table: Table):
     n = count_temporary() + 1
@@ -69,7 +67,6 @@ def save_csv(table: Table):
         for row in table.rows:
             writer.writerow(row)
     return f"tmp/{file_name}"
-    
 
 def count_temporary() -> int:
     if not os.path.isdir(TMP_FILEPATH):
@@ -81,3 +78,11 @@ def clean_temporary() -> None:
     if os.path.isdir(TMP_FILEPATH):
         shutil.rmtree(TMP_FILEPATH)
     return
+
+def read_dataset_info(target_table: str):
+    target_table_info: str = target_table.rsplit(".", 1)[0] + "_info.txt"
+    try:
+        with open(target_table_info, 'r') as f:
+            return f.read()
+    except Exception:
+        return f"Error: there are no available info for {target_table}"

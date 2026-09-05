@@ -33,5 +33,6 @@ def main():
     build_agent.print_response(response, args)
 
     clean_temporary()
+    return
 
 main()

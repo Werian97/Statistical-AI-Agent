@@ -1,5 +1,3 @@
-from data.filepath_to_data import HOUSE_PRICES
-
 from data.read_write_data import Table
 from openai.types.chat import ChatCompletionToolUnionParam
 
