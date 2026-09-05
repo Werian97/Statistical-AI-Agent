@@ -15,4 +15,4 @@ __pycache__/
 personal*
 
 #temporary
-*data/tmp/tmp_*
+*data/tmp/*
